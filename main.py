@@ -168,7 +168,7 @@ while running:
                     i.dead = True
                     death_count += 1
     t+=1
-    screen.blit(font.render('Personal best: %s frames'%personal_best, True, (0,0,0)), (10,10))
+    screen.blit(font.render('Furthest distance: %s frames'%personal_best, True, (0,0,0)), (10,10))
     pygame.display.flip()
     clock.tick(FPS)
 pygame.quit()
