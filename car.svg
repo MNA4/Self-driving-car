@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="793.70081"
+   height="1122.5197"
+   viewBox="0 0 210 296.99999"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2-beta (1b65182ce9, 2022-04-05)"
+   sodipodi:docname="car.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="1"
+     inkscape:cx="200"
+     inkscape:cy="311.5"
+     inkscape:window-width="1920"
+     inkscape:window-height="1177"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter3361"
+       x="-0.027743998"
+       y="-0.046239996"
+       width="1.055488"
+       height="1.09248">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.057799994"
+         id="feGaussianBlur3363" />
+    </filter>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="opacity:0.99;fill:#ff2222;fill-opacity:1;stroke:none;stroke-width:0.563649;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:3.38189, 3.38189;paint-order:markers stroke fill"
+       id="rect799"
+       width="30"
+       height="59.999992"
+       x="32.480469"
+       y="85.873024"
+       ry="2.5"
+       inkscape:export-filename="car.png"
+       inkscape:export-xdpi="84.309998"
+       inkscape:export-ydpi="84.309998" />
+    <path
+       id="rect801"
+       style="opacity:0.99;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:3.175, 3.175;paint-order:markers stroke fill;stroke:none"
+       d="m 34.980469,99.960082 h 25 L 58.922136,109.96009 H 36.038802 Z"
+       sodipodi:nodetypes="ccccc" />
+    <rect
+       style="opacity:0.99;fill:#ee0000;fill-opacity:0.992157;stroke:none;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:3.175, 3.175;paint-order:markers stroke fill"
+       id="rect4092"
+       width="25"
+       height="14.087058"
+       x="34.980469"
+       y="85.873016" />
+    <rect
+       style="opacity:0.99;mix-blend-mode:normal;fill:#fff97a;fill-opacity:1;stroke:none;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:3.175, 3.175;paint-order:markers stroke fill;filter:url(#filter3361)"
+       id="rect1067"
+       width="5"
+       height="3"
+       x="35.126305"
+       y="85.873016" />
+    <rect
+       style="opacity:0.99;mix-blend-mode:normal;fill:#fff97a;fill-opacity:1;stroke:none;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:3.175, 3.175;paint-order:markers stroke fill;filter:url(#filter3361)"
+       id="rect3365"
+       width="5"
+       height="3"
+       x="54.70549"
+       y="85.873016" />
+    <rect
+       style="opacity:0.99;fill:#ff3f3f;fill-opacity:0.992157;stroke:none;stroke-width:0.740245;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:4.44147, 4.44147;paint-order:markers stroke fill"
+       id="rect3465"
+       width="22.883331"
+       height="36.031158"
+       x="36.038799"
+       y="109.96009"
+       ry="0" />
+  </g>
+</svg>
