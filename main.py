@@ -95,16 +95,16 @@ def rotate(v1, v2, normalized = False):
 
 def cast_ray(o, d):
     p = list(o)
-    d = normalize(*d)
+    #d = normalize(*d)
     for i in range(200):
         if 0<p[0]<WIDTH and 0<p[1]<HEIGHT and mask.get_at(p):
             pygame.draw.line(screen, (0,0,255), o, p)
             pygame.draw.circle(screen, (0,0,0), p, 2)
-            return i
+            return 200-i
         p[0]+=d[0]
         p[1]+=d[1]
     pygame.draw.line(screen, (0,0,255), o, p)
-    return 200
+    return 0
 def reset(i):
     global l_cars_count, personal_best, generation, death_count, b_biases, b_weights, t
     l_cars_count = cars_count
@@ -118,6 +118,7 @@ def reset(i):
         j.dead = False
         j.pos = [60, 60]
         j.angle = -90
+        #j.angle = numpy.random.randint(0,360)
         j.biases = b_biases + (numpy.random.rand(j.neural_network.n_node)*2-1)*mutation_rate
         j.weights = weights = b_weights + (numpy.random.rand(j.neural_network.n_path)*2-1)*mutation_rate
 WIDTH = 1066
@@ -126,18 +127,19 @@ mutation_rate = 1/50
 avg_speed = 5
 cars_count = 100
 carimg = pygame.transform.scale(pygame.image.load('car.png'), (18, 38))
-surf = pygame.image.load('map2.png')
+surf = pygame.image.load('map3.png')
 mask = pygame.mask.from_threshold(surf, (181, 230, 29), (1,1,1))
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 clock = pygame.time.Clock()
 font = pygame.font.Font(None, 22)
 try:
+    error
     b_biases = genfromtxt('biases.csv', delimiter = ',')#https://stackoverflow.com/questions/3518778/how-do-i-read-csv-data-into-a-record-array-in-numpy
     b_weights = genfromtxt('weights.csv', delimiter = ',')
 except:
-    b_biases = (numpy.random.rand(NeuralNetwork(5, 2, 3, 1).n_node)*2-1)
-    b_weights = (numpy.random.rand(NeuralNetwork(5, 2, 3, 1).n_path)*2-1)
+    b_biases = 0#(numpy.random.rand(NeuralNetwork(5, 2, 3, 1).n_node)*2-1)
+    b_weights = 0#(numpy.random.rand(NeuralNetwork(5, 2, 3, 1).n_path)*2-1)
     
 death_count = 0
 generation = 1
