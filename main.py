@@ -46,7 +46,7 @@ class Car:
         self.map = surf
         self.pos = pos
         self.angle = angle
-        self.neural_network = NeuralNetwork(5, 1, 3, 1)
+        self.neural_network = NeuralNetwork(5, 2, 3, 1)
         self.dead = False
         
     def turn(self, angle):
@@ -105,27 +105,31 @@ def cast_ray(o, d):
     pygame.draw.line(screen, (0,0,255), o, p)
     return 200
 
-WIDTH = 512
+WIDTH = 1066
 HEIGHT = 512
 FPS = 1000000
+mutation_rate = 1/100
+avg_speed = 5
+cars_count = 100
 
-
-surf = pygame.image.load('map.png')
+surf = pygame.image.load('map2.png')
 mask = pygame.mask.from_threshold(surf, (181, 230, 29), (1,1,1))
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 clock = pygame.time.Clock()
 font = pygame.font.Font(None, 22)
-mutation_rate = 1/100
+
 b_biases = 0
 b_weights = 0
+
 death_count = 0
+generation = 1
 t = 0
 personal_best = 0
-cars_count = 10
+l_cars_count = cars_count
 cars = []
 for i in range(cars_count):
-    c = Car([43, 43],-90)
+    c = Car([60, 43],-90)
     cars.append(c)
     c.biases = b_biases + (numpy.random.rand(c.neural_network.n_node)*2-1)*mutation_rate
     c.weights = weights = b_weights + (numpy.random.rand(c.neural_network.n_path)*2-1)*mutation_rate
@@ -139,36 +143,42 @@ while running:
     screen.blit(surf, (0,0))
     for i in cars:
         if not i.dead:
-            i.forward(1)
             s = math.sin(math.radians(i.angle))
             c = math.cos(math.radians(i.angle))
             rotated_car = pygame.transform.rotozoom(i.img, i.angle, 1)
             pos = i.pos
-            d1 = cast_ray(pos, rotate((s,c), (-.25,-1)))
+            d1 = cast_ray(pos, rotate((s,c), (-.5,-1)))
             d2 = cast_ray(pos, rotate((s,c), (0,-1)))
-            d3 = cast_ray(pos, rotate((s,c), (.25,-1)))
-            d4 = cast_ray(pos, rotate((s,c), (-.5,-1)))
-            d5 = cast_ray(pos, rotate((s,c), (.5,-1)))
-            i.turn(i.neural_network.calculate(i.biases, i.weights, [d1,d2,d3,d4,d5])[0]*180-90)
+            d3 = cast_ray(pos, rotate((s,c), (.5,-1)))
+            d4 = cast_ray(pos, rotate((s,c), (-1,-1)))
+            d5 = cast_ray(pos, rotate((s,c), (1,-1)))
+            r = i.neural_network.calculate(i.biases, i.weights, [d1,d2,d3,d4,d5])
+            i.turn(r[0]*180-90)
+            i.forward(r[1]*avg_speed*2)
             i.render(screen)
             if i.is_colliding():
-                if death_count >= cars_count-1:                    
-                    personal_best = t
+                if death_count >= cars_count-1:
+                    l_cars_count = cars_count
+                    personal_best = t * avg_speed 
+                    generation += 1
                     death_count = 0
                     b_biases = i.biases
                     b_weights = i.weights              
                     t = 0
                     for j in cars:
                         j.dead = False
-                        j.pos = [43, 43]
+                        j.pos = [60, 43]
                         j.angle = -90
                         j.biases = b_biases + (numpy.random.rand(j.neural_network.n_node)*2-1)*mutation_rate
                         j.weights = weights = b_weights + (numpy.random.rand(j.neural_network.n_path)*2-1)*mutation_rate
                 else:
+                    l_cars_count -= 1
                     i.dead = True
                     death_count += 1
     t+=1
-    screen.blit(font.render('Furthest distance: %s frames'%personal_best, True, (0,0,0)), (10,10))
+    screen.blit(font.render('Furthest distance: %s pixels'%personal_best, True, (0,0,0)), (10,10))
+    screen.blit(font.render('Generation: %s'%generation, True, (0,0,0)), (10,32))
+    screen.blit(font.render('Cars: %s'%l_cars_count, True, (0,0,0)), (10,52))
     pygame.display.flip()
     clock.tick(FPS)
 pygame.quit()
