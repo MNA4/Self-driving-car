@@ -136,8 +136,8 @@ try:
     b_biases = genfromtxt('biases.csv', delimiter = ',')#https://stackoverflow.com/questions/3518778/how-do-i-read-csv-data-into-a-record-array-in-numpy
     b_weights = genfromtxt('weights.csv', delimiter = ',')
 except:
-    b_biases = (numpy.random.rand(c.neural_network.n_node)*2-1)
-    b_weights = (numpy.random.rand(c.neural_network.n_path)*2-1)
+    b_biases = (numpy.random.rand(NeuralNetwork(5, 2, 3, 1).n_node)*2-1)
+    b_weights = (numpy.random.rand(NeuralNetwork(5, 2, 3, 1).n_path)*2-1)
     
 death_count = 0
 generation = 1
