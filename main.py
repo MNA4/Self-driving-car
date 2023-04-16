@@ -122,7 +122,7 @@ def reset(i):
         j.weights = weights = b_weights + (numpy.random.rand(j.neural_network.n_path)*2-1)*mutation_rate
 WIDTH = 1066
 HEIGHT = 512
-mutation_rate = 1/100
+mutation_rate = 1/50
 avg_speed = 5
 cars_count = 100
 carimg = pygame.transform.scale(pygame.image.load('car.png'), (18, 38))
@@ -136,8 +136,8 @@ try:
     b_biases = genfromtxt('biases.csv', delimiter = ',')#https://stackoverflow.com/questions/3518778/how-do-i-read-csv-data-into-a-record-array-in-numpy
     b_weights = genfromtxt('weights.csv', delimiter = ',')
 except:
-    b_biases = 0
-    b_weights = 0
+    b_biases = (numpy.random.rand(c.neural_network.n_node)*2-1)
+    b_weights = (numpy.random.rand(c.neural_network.n_path)*2-1)
     
 death_count = 0
 generation = 1
