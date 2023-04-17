@@ -47,7 +47,7 @@ class Car:
         self.map = surf
         self.pos = pos
         self.angle = angle
-        self.neural_network = NeuralNetwork(5, 2, 3, 1)
+        self.neural_network = NeuralNetwork(5, 2, 10, 1)
         self.dead = False
         
     def turn(self, angle):
@@ -127,7 +127,7 @@ mutation_rate = 1/50
 avg_speed = 5
 cars_count = 100
 carimg = pygame.transform.scale(pygame.image.load('car.png'), (18, 38))
-surf = pygame.image.load('map3.png')
+surf = pygame.image.load('map6.png')
 mask = pygame.mask.from_threshold(surf, (181, 230, 29), (1,1,1))
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -188,5 +188,5 @@ while running:
     screen.blit(font.render('Cars: %s'%l_cars_count, True, (0,0,0)), (10,54))
     pygame.display.flip()
 pygame.quit()
-#numpy.savetxt('biases.csv', b_biases, delimiter=",")
-#numpy.savetxt('weights.csv', b_weights, delimiter=",") #https://stackoverflow.com/questions/6081008/dump-a-numpy-array-into-a-csv-file
+#numpy.savetxt('biases.csv', i.biases, delimiter=",")
+#numpy.savetxt('weights.csv', i.weights, delimiter=",") #https://stackoverflow.com/questions/6081008/dump-a-numpy-array-into-a-csv-file
